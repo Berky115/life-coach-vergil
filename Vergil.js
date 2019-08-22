@@ -1,12 +1,11 @@
-#!/usr/bin/env node
-
 const Twitter = require('twitter');
 const config = require('./config.js');
+const editJsonFile = require('edit-json-file');
 
 let T = new Twitter(config);
 
 function tweetOutFromList(
-	values,
+	quoteFile,
 	callback = function tweeter(tweet) {
 		T.post('statuses/update', { status: tweet }, function(err, data) {
 			if (err) console.log('error : ', err);
@@ -14,12 +13,18 @@ function tweetOutFromList(
 		});
 	}
 ) {
-	values.tweets.forEach(tweet => {
-		() => callback(tweet);
+	let fileTweets = editJsonFile(quoteFile, {
+		autosave: true,
 	});
+
+	let quotes = fileTweets.data.tweets;
+
+	callback(quotes.shift());
+
+	fileTweets.set("tweets", quotes);
 }
 
-const retweet = (
+const respondToContent = (
 	params = {
 		q: '#dmc',
 		count: 5,
@@ -39,7 +44,7 @@ const retweet = (
 					} else {
 						let username = response.user.screen_name;
 						let tweetId = response.id_str;
-						console.log( task , `https://twitter.com/${username}/status/${tweetId}`, ' Task succeeded');
+						console.log(task, `https://twitter.com/${username}/status/${tweetId}`, ' Task succeeded');
 					}
 				});
 			});
@@ -49,9 +54,7 @@ const retweet = (
 	});
 };
 
-retweet();
-
 module.exports = {
-	retweet: retweet,
+	respondToContent: respondToContent,
 	tweetOutFromList: tweetOutFromList,
 };
