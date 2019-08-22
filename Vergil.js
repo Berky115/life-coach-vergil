@@ -5,7 +5,7 @@ const editJsonFile = require('edit-json-file');
 let T = new Twitter(config);
 
 function tweetOutFromList(
-	quoteFile,
+	quoteFile = config.quotes_file_path,
 	callback = function tweeter(tweet) {
 		T.post('statuses/update', { status: tweet }, function(err, data) {
 			if (err) console.log('error : ', err);
@@ -18,10 +18,12 @@ function tweetOutFromList(
 	});
 
 	let quotes = fileTweets.data.tweets;
-
-	callback(quotes.shift());
-
-	fileTweets.set("tweets", quotes);
+	if(quotes){
+		callback(quotes.shift());
+		fileTweets.set("tweets", quotes);
+	} else {
+		console.log("No quotes")
+	}
 }
 
 const respondToContent = (
