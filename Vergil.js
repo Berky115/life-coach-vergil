@@ -1,6 +1,6 @@
 const Twitter = require('twitter');
-const config = require('./config.js');
 const editJsonFile = require('edit-json-file');
+const config = require('./config.js');
 
 let T = new Twitter(config);
 
@@ -18,31 +18,42 @@ function tweetOutFromList(
 	});
 
 	let quotes = fileTweets.data.tweets;
-	if(quotes){
+	if (quotes) {
 		callback(quotes.shift());
-		fileTweets.set("tweets", quotes);
+		fileTweets.set('tweets', quotes);
 	} else {
-		console.log("No quotes")
+		console.log('No quotes');
 	}
 }
 
-const respondToContent = (
+const favoriteTweet = (
+	task = 'favorites/create',
+	filePath = config.quotes_file_path,
 	params = {
-		q: '#dmc',
+		q: '#DMC',
 		count: 5,
 		result_type: 'recent',
 		lang: 'en',
-	},
-	task = 'favorites/create'
+	}
 ) => {
+	responseValues = extractResponseValues(filePath);
+	params.q = responseValues.topicsList[Math.floor(Math.random() * responseValues.topicsList.length)];
 	T.get('search/tweets', params, function(err, data, response) {
 		if (!err) {
 			data.statuses.forEach(tweet => {
-				console.log(tweet.text);
-				let id = { id: tweet.id_str };
-				T.post(task, id, function(err, response) {
+				console.log(tweet.text, '--------------------------------');
+				let apiParams;
+				if (task === 'favorites/create') {
+					apiParams = { id: tweet.id_str };
+				} else {
+					apiParams = {
+						status:'@' + tweet.user.screen_name + ' ' + responseValues.tweetResponses[Math.floor(Math.random() * responseValues.tweetResponses.length)],
+						in_reply_to_status_id: tweet.id
+					};
+				}
+				T.post(task, apiParams, function(err, response) {
 					if (err) {
-						console.log(err[0].message);
+						console.log(err.message);
 					} else {
 						let username = response.user.screen_name;
 						let tweetId = response.id_str;
@@ -56,7 +67,18 @@ const respondToContent = (
 	});
 };
 
+function extractResponseValues(filePath) {
+	let fileTweets = editJsonFile(filePath, {
+		autosave: true,
+	});
+	const responseValues = {
+		topicsList: fileTweets.data.topics,
+		tweetResponses: fileTweets.data.responses,
+	};
+	return responseValues;
+}
+
 module.exports = {
-	respondToContent: respondToContent,
+	favoriteTweet: favoriteTweet,
 	tweetOutFromList: tweetOutFromList,
 };

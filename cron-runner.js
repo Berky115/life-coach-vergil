@@ -1,4 +1,5 @@
 const Vergil = require('./Vergil.js')
 
-Vergil.respondToContent();
+Vergil.favoriteTweet();
+Vergil.favoriteTweet('statuses/update');
 Vergil.tweetOutFromList();
