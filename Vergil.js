@@ -4,12 +4,12 @@ const Twitter = require('twitter');
 
 const T = new Twitter(config);
 
-function tweetOutFromList(
+const tweetOutFromList = (
 	filePath = config.quotes_file_path,
 	callback = function tweeter(tweet) {
 		T.post('statuses/update', { status: tweet }, responseCallback);
 	}
-) {
+) => {
 	let fileTweets = editJsonFile(filePath, {
 		autosave: true,
 	});
@@ -59,7 +59,7 @@ const respondTweet = (
 	});
 };
 
-function extractResponseValues(filePath) {
+const extractResponseValues = (filePath) => {
 	let fileTweets = editJsonFile(filePath, {
 		autosave: true,
 	});
@@ -70,12 +70,12 @@ function extractResponseValues(filePath) {
 	return responseValues;
 }
 
-function extractQuery(responseValues) {
+const extractQuery = (responseValues) => {
 	return responseValues.topicsList[Math.floor(Math.random() * responseValues.topicsList.length)];
 }
 
 const responseCallback = (err, data) => {
-	if (err) console.log('error : ', err.message);
+	if (err) console.log('error : ', err);
 	else console.log('Success : ' + data.text);
 }
 
