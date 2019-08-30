@@ -17,27 +17,27 @@ function tweetOutFromList(
 		autosave: true,
 	});
 
-	let quotes = fileTweets.data.tweets;
-	if (quotes) {
-		callback(quotes.shift());
-		fileTweets.set('tweets', quotes);
+	let tweets = fileTweets.data.tweets;
+	if (tweets) {
+		callback(tweets.shift());
+		fileTweets.set('tweets', tweets);
 	} else {
 		console.log('No quotes');
 	}
 }
 
-const favoriteTweet = (
+const respondTweet = (
 	task = 'favorites/create',
 	filePath = config.quotes_file_path,
 	params = {
 		q: '#DMC',
-		count: 5,
+		count: Math.floor(Math.random() * 10) + 1,
 		result_type: 'recent',
 		lang: 'en',
 	}
 ) => {
 	responseValues = extractResponseValues(filePath);
-	params.q = responseValues.topicsList[Math.floor(Math.random() * responseValues.topicsList.length)];
+	params.q = extractQuery(responseValues); // this will blow up any param you try to FORCE for q.
 	T.get('search/tweets', params, function(err, data, response) {
 		if (!err) {
 			data.statuses.forEach(tweet => {
@@ -78,7 +78,11 @@ function extractResponseValues(filePath) {
 	return responseValues;
 }
 
+function extractQuery (responseValues) {
+	return responseValues.topicsList[Math.floor(Math.random() * responseValues.topicsList.length)];
+}
+
 module.exports = {
-	favoriteTweet: favoriteTweet,
+	respondTweet: respondTweet,
 	tweetOutFromList: tweetOutFromList,
 };
