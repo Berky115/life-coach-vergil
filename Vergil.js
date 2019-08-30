@@ -1,16 +1,13 @@
-const Twitter = require('twitter');
-const editJsonFile = require('edit-json-file');
 const config = require('./config.js');
+const editJsonFile = require('edit-json-file');
+const Twitter = require('twitter');
 
-let T = new Twitter(config);
+const T = new Twitter(config);
 
 function tweetOutFromList(
 	filePath = config.quotes_file_path,
 	callback = function tweeter(tweet) {
-		T.post('statuses/update', { status: tweet }, function(err, data) {
-			if (err) console.log('error : ', err);
-			else console.log('Success : ' + data.text);
-		});
+		T.post('statuses/update', { status: tweet }, responseCallback);
 	}
 ) {
 	let fileTweets = editJsonFile(filePath, {
@@ -41,10 +38,8 @@ const respondTweet = (
 		if (!err) {
 			data.statuses.forEach(tweet => {
 				console.log('Tweet text: ' , tweet.text);
-				let apiParams;
-				if (task === 'favorites/create') {
-					apiParams = { id: tweet.id_str };
-				} else {
+				let apiParams = { id: tweet.id_str };
+				if (task !== 'favorites/create') {
 					apiParams = {
 						status:
 							'@' +
@@ -53,16 +48,10 @@ const respondTweet = (
 							responseValues.tweetResponses[
 								Math.floor(Math.random() * responseValues.tweetResponses.length)
 							],
-						in_reply_to_status_id: tweet.id,
+						in_reply_to_status_id: tweet.id_str,
 					};
 				}
-				T.post(task, apiParams, function(err, response) {
-					if (err) {
-						console.log(err.message);
-					} else {
-						console.log(task, `User: ${response.user.screen_name}`, ' Task succeeded');
-					}
-				});
+				T.post(task, apiParams, responseCallback);
 			});
 		} else {
 			console.log(err);
@@ -83,6 +72,11 @@ function extractResponseValues(filePath) {
 
 function extractQuery(responseValues) {
 	return responseValues.topicsList[Math.floor(Math.random() * responseValues.topicsList.length)];
+}
+
+const responseCallback = (err, data) => {
+	if (err) console.log('error : ', err.message);
+	else console.log('Success : ' + data.text);
 }
 
 module.exports = {
