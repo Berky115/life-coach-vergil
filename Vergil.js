@@ -37,7 +37,6 @@ const respondTweet = (
 	T.get('search/tweets', params, function(err, data, response) {
 		if (!err) {
 			data.statuses.forEach(tweet => {
-				console.log('Tweet text: ' , tweet.text);
 				let apiParams = { id: tweet.id_str };
 				if (task !== 'favorites/create') {
 					apiParams = {
@@ -51,7 +50,11 @@ const respondTweet = (
 						in_reply_to_status_id: tweet.id_str,
 					};
 				}
-				T.post(task, apiParams, responseCallback);
+				if(!config.blackList.includes(tweet.user.screen_name)){
+					T.post(task, apiParams, responseCallback);
+				} else {
+					console.log("User ", tweet.user.screen_name , " is blacklisted and will not be processed")
+				}
 			});
 		} else {
 			console.log(err);

@@ -10,6 +10,7 @@
 /build
 
 # misc
+cron-runner.js
 config.js
 tweets.json
 package-lock.json
