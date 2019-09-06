@@ -21,7 +21,7 @@ const tweetOutFromList = (
 	} else {
 		console.log('No quotes');
 	}
-}
+};
 
 const respondTweet = (
 	task = 'favorites/create',
@@ -50,10 +50,10 @@ const respondTweet = (
 						in_reply_to_status_id: tweet.id_str,
 					};
 				}
-				if(!config.blackList.includes(tweet.user.screen_name)){
+				if (!config.blackList.includes(tweet.user.screen_name)) {
 					T.post(task, apiParams, responseCallback);
 				} else {
-					console.log("User ", tweet.user.screen_name , " is blacklisted and will not be processed")
+					console.log('User ', tweet.user.screen_name, ' is blacklisted and will not be processed');
 				}
 			});
 		} else {
@@ -62,7 +62,7 @@ const respondTweet = (
 	});
 };
 
-const extractResponseValues = (filePath) => {
+const extractResponseValues = filePath => {
 	let fileTweets = editJsonFile(filePath, {
 		autosave: true,
 	});
@@ -71,16 +71,16 @@ const extractResponseValues = (filePath) => {
 		tweetResponses: fileTweets.data.responses,
 	};
 	return responseValues;
-}
+};
 
-const extractQuery = (responseValues) => {
+const extractQuery = responseValues => {
 	return responseValues.topicsList[Math.floor(Math.random() * responseValues.topicsList.length)];
-}
+};
 
 const responseCallback = (err, data) => {
 	if (err) console.log('error : ', err);
 	else console.log('Success : ' + data.text);
-}
+};
 
 module.exports = {
 	respondTweet: respondTweet,
