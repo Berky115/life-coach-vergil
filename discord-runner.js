@@ -12,6 +12,8 @@ client.on('message', msg => {
 		msg.reply(messages.discord_responses[Math.floor(Math.random() * messages.discord_responses.length)]);
 	} else if (messages.tip_commands.includes(msg.content)) {
 		msg.reply(messages.motivation_tips[Math.floor(Math.random() * messages.motivation_tips.length)]);
+	} else if(messages.known_scum.includes(msg.content)){
+		msg.reply("Scum!")
 	}
 });
 

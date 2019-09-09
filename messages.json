@@ -1,5 +1,12 @@
 {
-  "tweets": [],
+  "tweets": [
+    "Motivation tip #17: Life isn't about finding yourself. Life is about creating yourself. Know what I'm talking bout V? #blessed",
+    "May your mind be as focused and sharp as my sword #swords",
+    "I...earned...a reputation for being egotistic. Luckily Dantes there to show me life's too mysterious to take too serious. Love you bro <3",
+    "Is that some motivation in your pocket or are you just happy to see me? #sensational",
+    "If you have to ask...it's too late! I've already conquered leg day #workout #motivate",
+    "Shout out to @tiny_star_field for filling my dark feed with light"
+  ],
   "responses": [
     "Well now...how interesting",
     "You showed up...",
@@ -70,5 +77,6 @@
     "Motivation tip #7: Visualize success. What does it look like? How do you get there? Who will you step on to make it happen?",
     "Motivation tip #8: Remember to make time in your day to brood. Self care is very important.",
     "Motivation tip #69: business before pleasure. Makes the reward that much more S-S-Satisfying"
-  ]
+  ],
+  "known_scum" : ["Arkham", "Urizen", "Trump", "Mundus", "Agnus", "Pence", "Sanctus" ]
 }
