@@ -32,3 +32,6 @@ https://discordapp.com/api/oauth2/authorize?client_id=617053756516728842&permiss
     "!mt",
     "!mhelp",
     "!needatip"
+
+
+#### Scum list - there is a list of keywords that frustrate Vergil. If mentioned, he will call you scum.
