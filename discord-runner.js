@@ -15,14 +15,24 @@ client.on('message', msg => {
 		msg.reply(messages.motivation_tips[Math.floor(Math.random() * messages.motivation_tips.length)]);
 	} else if(messages.known_scum.some(word => msg.content.includes(word))){
 		msg.reply("Scum!")
+	} else if (messages.trigger_commands.includes(msg.content)) {
+		if (msg.channel.type !== 'text') return;
+
+		const { voiceChannel } = msg.member;
+
+		if (!voiceChannel) {
+			return msg.reply('please join a voice channel first!');
+		}
+		voiceChannel.join().then(connection => {
+			//create list of dmc related tracks
+			const stream = ytdl('https://www.youtube.com/watch?v=K26mi_cSAkA', { filter: 'audioonly' });
+			const dispatcher = connection.playStream(stream);
+			dispatcher.on('end', () => voiceChannel.leave());
+		});
 	}
-	// else if (messages.poll_commands.includes(msg.content)){
-	// 	const params = msg.content.split(" ");
-	// 	console.log(params)
-	// 	//https://www.npmjs.com/package/discord.js-poll-embed
-	// 	pollEmbed(msg, "title", "1,2,3,4,5", 30, emojiList);
-	// }
 });
 
-client.login(process.env.BOT_TOKEN);
+// client.login(process.env.BOT_TOKEN);
+client.login("NjE3MDUzNzU2NTE2NzI4ODQy.XWmNCQ.iG1bj1noqUc_Vq_clE8Avr-Vzqs");
+
 

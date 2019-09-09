@@ -1,7 +1,5 @@
 {
   "tweets": [
-    "May your mind be as focused and sharp as my sword #swords",
-    "I...earned...a reputation for being egotistic. Luckily Dantes there to show me life's too mysterious to take too serious. Love you bro <3",
     "Is that some motivation in your pocket or are you just happy to see me? #sensational",
     "If you have to ask...it's too late! I've already conquered leg day #workout #motivate",
     "Shout out to @tiny_star_field for filling my dark feed with light"
@@ -99,5 +97,17 @@
     "FUCKYOU",
     "calzone",
     "crocks"
+  ],
+  "trigger_commands": [
+    "!trigger",
+    "!Trigger",
+    "!DT",
+    "!DevilTrigger",
+    "!Scum",
+    "!scum",
+    "!jam",
+    "!Jam",
+    "!deviltrigger",
+    "!dt"
   ]
 }
