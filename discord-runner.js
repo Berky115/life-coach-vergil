@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const pollEmbed = require('discord.js-poll-embed');
 const messages = require('./messages.json');
 
 const client = new Discord.Client();
@@ -24,6 +23,8 @@ client.on('message', msg => {
 			return msg.reply('please join a voice channel first!');
 		}
 		voiceChannel.join().then(connection => {
+			msg.reply('NOW IM MOTIVATED!')
+			console.log('here!')
 			//create list of dmc related tracks
 			const stream = ytdl('https://www.youtube.com/watch?v=K26mi_cSAkA', { filter: 'audioonly' });
 			const dispatcher = connection.playStream(stream);
