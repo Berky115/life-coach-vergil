@@ -38,10 +38,7 @@ client.on('message', msg => {
 	}
 });
 
-//prod
-client.login(process.env.BOT_TOKEN);
-//dev
-// client.login(config.discord_token);
+client.login(process.env.BOT_TOKEN || config.discord_token);
 
 
 
