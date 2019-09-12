@@ -1,33 +1,35 @@
 const Discord = require('discord.js');
+const fs = require('fs');
+
 const messages = require('./messages.json');
+const config = require('./config.js');
 
 const client = new Discord.Client();
+client.commands = new Discord.Collection();
+
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+for (const file of commandFiles) {
+	const command = require(`./commands/${file}`);
+	client.commands.set(command.name, command);
+}
 
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 });
 
 client.on('message', msg => {
-	if (messages.motivate_commands.includes(msg.content)) {
-		msg.reply(messages.discord_responses[Math.floor(Math.random() * messages.discord_responses.length)]);
-	} else if (messages.tip_commands.includes(msg.content)) {
-		msg.reply(messages.motivation_tips[Math.floor(Math.random() * messages.motivation_tips.length)]);
-	} else if (messages.trigger_commands.includes(msg.content)) {
-		if (msg.channel.type !== 'text') return;
+	if (!msg.content.startsWith(messages.prefix) || msg.author.bot) return;
 
-		const { voiceChannel } = msg.member;
+	const args = msg.content.slice(messages.prefix.length).split(/ +/);
+	const command = args.shift().toLowerCase();
 
-		if (!voiceChannel) {
-			return msg.reply('please join a voice channel first!');
-		}
-		voiceChannel.join().then(connection => {
-			msg.reply('NOW IM MOTIVATED!')
-			console.log('here!')
-			//create list of dmc related tracks
-			const stream = ytdl('https://www.youtube.com/watch?v=K26mi_cSAkA', { filter: 'audioonly' });
-			const dispatcher = connection.playStream(stream);
-			dispatcher.on('end', () => voiceChannel.leave());
-		});
+	if (!client.commands.has(command)) return;
+
+	try {
+		client.commands.get(command).execute(msg, args);
+	} catch (error) {
+		console.error(error);
+		msg.reply('there was an error trying to execute that command!');
 	}
 
 	// Passive actions based on general user input
@@ -39,7 +41,7 @@ client.on('message', msg => {
 //prod
 client.login(process.env.BOT_TOKEN);
 //dev
-//client.login(config.discord_token);
+// client.login(config.discord_token);
 
 
 

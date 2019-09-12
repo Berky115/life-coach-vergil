@@ -14,8 +14,11 @@
 		"discord.js-poll-embed": "^1.0.1",
 		"esm": "^3.2.25",
 		"mocha": "^6.2.0",
+		"node-opus": "^0.3.2",
 		"twit": "^2.2.11",
-		"twitter": "^1.7.1"
+		"twitter": "^1.7.1",
+		"ytdl": "^0.13.1",
+		"ytdl-core": "^0.29.7"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.5.5",

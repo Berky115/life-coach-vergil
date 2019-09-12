@@ -18,25 +18,9 @@ https://discordapp.com/api/oauth2/authorize?client_id=617053756516728842&permiss
 ```
 
 ### Commands list:
-
-#### To have Vergil respond with a general message, use any of the following commands
-```
-    "!motivate",
-    "!motivation",
-    "!jackpot",
-    "!m",
-    "!SSS",
-    "!sss"
-```
-
-#### To have vergil specifically respond with a motivational tip, use any of the following commands
-```
-    "!tip",
-    "!mt",
-    "!mhelp",
-    "!needatip"
-```
-
+```motivate``` - Get motivated with an exclusive quote from Vergil
+```tip"``` - Get a helpful tip from Vergils motivational Tip list.
+```jam``` - Get pumped with some music from Vergils exclusive playlist.
 
 #### Scum list - there is a list of keywords that frustrate Vergil. If mentioned, he will call you scum.
 ```
@@ -53,19 +37,3 @@ https://discordapp.com/api/oauth2/authorize?client_id=617053756516728842&permiss
     "calzone",
     "crocks"
 ```
-
-#### Devil Trigger Playlist:
-A list of commands that will prompt Vergil to play s-s-sensational devil may cry music in voicechat channels
-
-```
-    "!trigger",
-    "!Trigger",
-    "!DT",
-    "!DevilTrigger",
-    "!Scum",
-    "!scum",
-    "!jam",
-    "!Jam",
-    "!deviltrigger",
-    "!dt"
- ```

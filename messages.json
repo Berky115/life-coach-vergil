@@ -1,9 +1,9 @@
 {
+  "prefix": "!",
   "tweets": [
-    "Shout out to @tiny_star_field for filling my dark feed with light",
-    "Good hustle everyone",
-    "We shall NEVER surrender",
-    "It seems I've A LOT to teach Nero about motivation."
+    " May the skulls of your enemies pile up beneath your feet #Blessed #motivation",
+    "Respect and appreachiate all creatures. From the largest eldritch horror to the tiniest imp",
+    "Gonna spend some time in the vodi today. Gatta work on my form"
   ],
   "responses": [
     "You showed up...",
@@ -30,27 +30,19 @@
     "Dmc3"
   ],
   "motivate_commands": [
-    "!motivate",
-    "!motivation",
-    "!jackpot",
-    "!m",
-    "!SSS",
-    "!sss",
-    "!Vergil",
-    "!Verg"
+    "verg"
   ],
   "tip_commands": [
-    "!tip",
-    "!mt",
-    "!mhelp",
-    "!needatip"
+    "tip",
+    "mt",
+    "mhelp",
+    "needatip"
   ],
   "poll_commands": [
-    "!poll",
-    "!p",
-    "!VergilWantsToKnow",
-    "!Poll",
-    "!POLL"
+    "poll",
+    "p",
+    "vergilwantstoknow",
+    "poll"
   ],
   "discord_responses": [
     "Well well well...",
@@ -81,32 +73,29 @@
     "Motivation tip #6: Remember to laugh. At the end of the day, we're all just a bunch of red orbs",
     "Motivation tip #7: Visualize success. What does it look like? How do you get there? Who will you step on to make it happen?",
     "Motivation tip #8: Remember to make time in your day to brood. Self care is very important.",
+    "Motivation tip #9: You are made from stardust. It's in your very essence to shine",
     "Motivation tip #69: business before pleasure. Makes the reward that much more S-S-Satisfying"
   ],
   "known_scum": [
-    "Arkham",
-    "Urizen",
-    "Trump",
-    "Mundus",
-    "Agnus",
-    "Pence",
-    "Sanctus",
+    "arkham",
+    "urizen",
+    "trump",
+    "mundus",
+    "agnus",
+    "pence",
+    "sanctus",
     "fuck",
     "fuck you",
-    "FUCKYOU",
+    "fuckyou",
     "calzone",
     "crocks"
   ],
   "trigger_commands": [
-    "!trigger",
-    "!Trigger",
-    "!DT",
-    "!DevilTrigger",
-    "!Scum",
-    "!scum",
-    "!jam",
-    "!Jam",
-    "!deviltrigger",
+    "trigger",
+    "dt",
+    "deviltrigger",
+    "scum",
+    "jam",
     "!dt"
   ]
 }
