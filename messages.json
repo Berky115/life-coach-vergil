@@ -29,21 +29,6 @@
     "Dmc5",
     "Dmc3"
   ],
-  "motivate_commands": [
-    "verg"
-  ],
-  "tip_commands": [
-    "tip",
-    "mt",
-    "mhelp",
-    "needatip"
-  ],
-  "poll_commands": [
-    "poll",
-    "p",
-    "vergilwantstoknow",
-    "poll"
-  ],
   "discord_responses": [
     "Well well well...",
     "Jackpot!",
@@ -90,12 +75,16 @@
     "calzone",
     "crocks"
   ],
-  "trigger_commands": [
-    "trigger",
-    "dt",
-    "deviltrigger",
-    "scum",
-    "jam",
-    "!dt"
+  "motivation_playlist" : [
+    "https://www.youtube.com/watch?v=K26mi_cSAkA",
+    "https://www.youtube.com/watch?v=-WpnPSChVRQ",
+    "https://www.youtube.com/watch?v=84jrCjX022Y",
+    "https://www.youtube.com/watch?v=F577tB8JvOc",
+    "https://www.youtube.com/watch?v=51_1zQg2k6s"
+  ],
+  "radio_stations" : [
+    "https://www.youtube.com/watch?v=hHW1oY26kxQ",
+    "https://www.youtube.com/watch?v=bebuiaSKtU4",
+    "https://www.youtube.com/watch?v=JsLTNuC3FSc"
   ]
 }

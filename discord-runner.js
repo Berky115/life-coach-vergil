@@ -27,22 +27,18 @@ client.on('message', msg => {
 		client.commands.get(command).execute(msg, args);
 	} catch (error) {
 		console.error(error);
-		msg.reply('there was an error trying to execute that command!');
+		msg.reply('there was an error trying to execute the command!');
 	}
 
 	// Passive actions based on general user input
-	if(messages.known_scum.some(word => msg.content.includes(word))){
-		msg.reply("Scum!")
+	if (messages.known_scum.some(word => msg.content.includes(word))) {
+		msg.reply('Scum!');
 	}
 });
 
 try {
 	const config = require('./config.js');
 	client.login(config.discord_token);
-} catch(e) {
-	client.login(process.env.BOT_TOKEN );
+} catch (e) {
+	client.login(process.env.BOT_TOKEN);
 }
-
-
-
-
