@@ -23,4 +23,4 @@ https://discordapp.com/api/oauth2/authorize?client_id=617053756516728842&permiss
 - "!jam" : Get pumped with some music from Vergils exclusive playlist.
 - "!jam radio" : Chill out with some of Vergils favorite radio stations.
 
-#### Scum list - A passive command that will call those who say 'nasty' things on the server
+#### Scum list - A passive command that will call those who say 'nasty' things on the server 'Scum!'
