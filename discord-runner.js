@@ -1,8 +1,6 @@
 const Discord = require('discord.js');
 const fs = require('fs');
-
 const messages = require('./messages.json');
-const config = require('./config.js');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -39,6 +37,7 @@ client.on('message', msg => {
 });
 
 try {
+	const config = require('./config.js');
 	client.login(config.discord_token);
 } catch(e) {
 	client.login(process.env.BOT_TOKEN );
