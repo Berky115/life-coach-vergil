@@ -10,7 +10,7 @@ const tweetOutFromList = (
 		T.post('statuses/update', { status: tweet }, responseCallback);
 	}
 ) => {
-	let fileTweets = editJsonFile( filePath, {
+	let fileTweets = editJsonFile(filePath, {
 		autosave: true,
 	});
 
