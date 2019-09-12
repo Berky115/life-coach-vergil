@@ -29,9 +29,8 @@ module.exports = {
 				dispatcher.on('end', () => voiceChannel.leave());
 			});
 		} else {
-			console.log("Party's over people");
-			msg.reply("Party's over people");
-			dispatcher.end;
+            dispatcher.end;
+            return msg.reply("Party's over people");
 		}
 	},
 };
