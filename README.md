@@ -39,6 +39,20 @@ https://discordapp.com/api/oauth2/authorize?client_id=617053756516728842&permiss
 
 
 #### Scum list - there is a list of keywords that frustrate Vergil. If mentioned, he will call you scum.
+```
+    "Arkham",
+    "Urizen",
+    "Trump",
+    "Mundus",
+    "Agnus",
+    "Pence",
+    "Sanctus",
+    "fuck",
+    "fuck you",
+    "FUCKYOU",
+    "calzone",
+    "crocks"
+```
 
 #### Devil Trigger Playlist:
 A list of commands that will prompt Vergil to play s-s-sensational devil may cry music in voicechat channels
