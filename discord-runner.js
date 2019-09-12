@@ -38,7 +38,12 @@ client.on('message', msg => {
 	}
 });
 
-client.login(process.env.BOT_TOKEN || config.discord_token);
+try {
+	client.login(config.discord_token);
+} catch(e) {
+	client.login(process.env.BOT_TOKEN );
+}
+
 
 
 
