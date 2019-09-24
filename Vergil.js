@@ -57,7 +57,7 @@ const respondTweet = (
 				}
 			});
 		} else {
-			console.log(err);
+			console.log(err, "oh no!");
 		}
 	});
 };
